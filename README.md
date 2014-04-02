@@ -1,4 +1,4 @@
-TechnicalInterview_FeedReader
+Technical Interview: FeedReader
 =============================
 **Purpose**
 
