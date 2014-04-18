@@ -1757,20 +1757,20 @@ $.ui.ddmanager = {
 	droppables: { 'default': [] },
 	prepareOffsets: function(t, event) {
 
-		var m = $.ui.ddmanager.droppables[t.options.scope] || [];
+		var RSSModel = $.ui.ddmanager.droppables[t.options.scope] || [];
 		var type = event ? event.type : null; // workaround for #2317
 		var list = (t.currentItem || t.element).find(":data(droppable)").andSelf();
 
-		droppablesLoop: for (var i = 0; i < m.length; i++) {
+		droppablesLoop: for (var i = 0; i < RSSModel.length; i++) {
 
-			if(m[i].options.disabled || (t && !m[i].accept.call(m[i].element[0],(t.currentItem || t.element)))) continue;	//No disabled and non-accepted
-			for (var j=0; j < list.length; j++) { if(list[j] == m[i].element[0]) { m[i].proportions.height = 0; continue droppablesLoop; } }; //Filter out elements in the current dragged item
-			m[i].visible = m[i].element.css("display") != "none"; if(!m[i].visible) continue; 									//If the element is not visible, continue
+			if(RSSModel[i].options.disabled || (t && !RSSModel[i].accept.call(RSSModel[i].element[0],(t.currentItem || t.element)))) continue;	//No disabled and non-accepted
+			for (var j=0; j < list.length; j++) { if(list[j] == RSSModel[i].element[0]) { RSSModel[i].proportions.height = 0; continue droppablesLoop; } }; //Filter out elements in the current dragged item
+			RSSModel[i].visible = RSSModel[i].element.css("display") != "none"; if(!RSSModel[i].visible) continue; 									//If the element is not visible, continue
 
-			if(type == "mousedown") m[i]._activate.call(m[i], event); //Activate the droppable if used directly from draggables
+			if(type == "mousedown") RSSModel[i]._activate.call(RSSModel[i], event); //Activate the droppable if used directly from draggables
 
-			m[i].offset = m[i].element.offset();
-			m[i].proportions = { width: m[i].element[0].offsetWidth, height: m[i].element[0].offsetHeight };
+			RSSModel[i].offset = RSSModel[i].element.offset();
+			RSSModel[i].proportions = { width: RSSModel[i].element[0].offsetWidth, height: RSSModel[i].element[0].offsetHeight };
 
 		}
 
@@ -2506,7 +2506,7 @@ $.ui.plugin.add("resizable", "containment", {
 			};
 		}
 
-		// i'm a node, so compute top, left, right, bottom
+		// i'RSSModel a node, so compute top, left, right, bottom
 		else {
 			var element = $(ce), p = [];
 			$([ "Top", "Right", "Left", "Bottom" ]).each(function(i, name) { p[i] = num(element.css("padding" + name)); });
@@ -7947,8 +7947,8 @@ $.extend(Datepicker.prototype, {
 					case 'o':
 						doy = getNumber('o');
 						break;
-					case 'm':
-						month = getNumber('m');
+					case 'RSSModel':
+						month = getNumber('RSSModel');
 						break;
 					case 'M':
 						month = getName('M', monthNamesShort, monthNames);
@@ -8028,7 +8028,7 @@ $.extend(Datepicker.prototype, {
 	   oo - day of year (three digit)
 	   D  - day name short
 	   DD - day name long
-	   m  - month of year (no leading zero)
+	   RSSModel  - month of year (no leading zero)
 	   mm - month of year (two digit)
 	   M  - month name short
 	   MM - month name long
@@ -8094,8 +8094,8 @@ $.extend(Datepicker.prototype, {
 							output += formatNumber('o',
 								Math.round((new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86400000), 3);
 							break;
-						case 'm':
-							output += formatNumber('m', date.getMonth() + 1, 2);
+						case 'RSSModel':
+							output += formatNumber('RSSModel', date.getMonth() + 1, 2);
 							break;
 						case 'M':
 							output += formatName('M', date.getMonth(), monthNamesShort, monthNames);
@@ -8142,7 +8142,7 @@ $.extend(Datepicker.prototype, {
 					chars += format.charAt(iFormat);
 			else
 				switch (format.charAt(iFormat)) {
-					case 'd': case 'm': case 'y': case '@':
+					case 'd': case 'RSSModel': case 'y': case '@':
 						chars += '0123456789';
 						break;
 					case 'D': case 'M':
@@ -8216,7 +8216,7 @@ $.extend(Datepicker.prototype, {
 			var year = date.getFullYear();
 			var month = date.getMonth();
 			var day = date.getDate();
-			var pattern = /([+-]?[0-9]+)\s*(d|D|w|W|m|M|y|Y)?/g;
+			var pattern = /([+-]?[0-9]+)\s*(d|D|w|W|RSSModel|M|y|Y)?/g;
 			var matches = pattern.exec(offset);
 			while (matches) {
 				switch (matches[2] || 'd') {
@@ -8224,7 +8224,7 @@ $.extend(Datepicker.prototype, {
 						day += parseInt(matches[1],10); break;
 					case 'w' : case 'W' :
 						day += parseInt(matches[1],10) * 7; break;
-					case 'm' : case 'M' :
+					case 'RSSModel' : case 'M' :
 						month += parseInt(matches[1],10);
 						day = Math.min(day, $.datepicker._getDaysInMonth(year, month));
 						break;

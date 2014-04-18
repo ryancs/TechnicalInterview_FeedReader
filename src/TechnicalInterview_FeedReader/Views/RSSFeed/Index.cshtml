@@ -1,0 +1,38 @@
+﻿@model TechnicalInterview_FeedReader.Models.RSSFeedReaderModel
+
+@{
+    ViewBag.Title = "My RSS Feed Reader";
+}
+
+@if (ViewBag.LoggedIn == true)
+{
+
+    using(Html.BeginForm(null, "RssFeed","Index"))
+    {
+        @Html.TextBoxFor(model => model.RSSFeedURL)
+        <input type="submit" value="Subscribe To RSS Feed" />
+    }
+
+    <h1>Your feeds</h1>
+    if ((@Model.RSSURLS != null))
+    {
+        <div>
+    
+            <ul>
+                @foreach (var feedURL in @Model.RSSURLS)
+                {
+                    <li>
+                        @Html.ActionLink(feedURL.FeedUri, "Read", new {URL = feedURL.FeedUri })
+                    </li>
+                }
+            </ul>
+            <br />
+            <b>@Html.ActionLink("Click here to see all of your feeds.", "ReadAll")</b>
+        </div>
+    }
+}
+else
+{
+    <h2>Please register or login first to start subscribing to feeds!</h2>
+}
+

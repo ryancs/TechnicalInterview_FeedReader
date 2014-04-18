@@ -17,6 +17,8 @@ namespace TechnicalInterview_FeedReader.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+
         //
         // GET: /Account/Login
 
@@ -40,7 +42,7 @@ namespace TechnicalInterview_FeedReader.Controllers
                 return RedirectToLocal(returnUrl);
             }
 
-            // If we got this far, something failed, redisplay form
+            // If it got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
@@ -60,6 +62,7 @@ namespace TechnicalInterview_FeedReader.Controllers
         //
         // GET: /Account/Register
 
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Register()
         {

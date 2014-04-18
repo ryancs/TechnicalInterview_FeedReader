@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using TechnicalInterview_FeedReader.Models;
 
 namespace TechnicalInterview_FeedReader
 {
@@ -18,6 +20,8 @@ namespace TechnicalInterview_FeedReader
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            Database.SetInitializer<UsersContext>(null);
         }
     }
 }

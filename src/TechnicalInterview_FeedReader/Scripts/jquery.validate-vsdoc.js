@@ -638,10 +638,10 @@ $.extend($.validator, {
 		
 		// return the custom message for the given element name and validation method
 		customMessage: function( name, method ) {
-			var m = this.settings.messages[name];
-			return m && (m.constructor == String
-				? m
-				: m[method]);
+			var RSSModel = this.settings.messages[name];
+			return RSSModel && (RSSModel.constructor == String
+				? RSSModel
+				: RSSModel[method]);
 		},
 		
 		// return the first defined argument, allowing empty strings

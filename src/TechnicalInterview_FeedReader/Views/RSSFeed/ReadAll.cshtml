@@ -1,0 +1,18 @@
+﻿@model TechnicalInterview_FeedReader.Models.RSSFeedReaderModel
+
+@if ((@Model.RSSFeeds != null))
+{
+    <h2>@Model.RSSTitle</h2>
+    <ul>
+        @foreach (var rssFeed in Model.RSSFeeds)
+        {
+            <li>
+                <a href="@rssFeed.RSSFeedSource">@rssFeed.RSSFeedTitle</a>
+                <div>Published On: @rssFeed.RSSFeedDate</div>
+                <div>
+                    @Html.Raw(rssFeed.RSSFeedDescription)
+                </div>
+            </li>
+        }
+    </ul>
+}

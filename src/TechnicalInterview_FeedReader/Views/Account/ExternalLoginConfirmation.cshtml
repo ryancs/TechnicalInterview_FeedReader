@@ -21,12 +21,12 @@
         </p>
         <ol>
             <li class="name">
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
+                @Html.LabelFor(RSSModel => RSSModel.UserName)
+                @Html.TextBoxFor(RSSModel => RSSModel.UserName)
+                @Html.ValidationMessageFor(RSSModel => RSSModel.UserName)
             </li>
         </ol>
-        @Html.HiddenFor(m => m.ExternalLoginData)
+        @Html.HiddenFor(RSSModel => RSSModel.ExternalLoginData)
         <input type="submit" value="Register" />
     </fieldset>
 }

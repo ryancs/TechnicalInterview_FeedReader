@@ -18,18 +18,18 @@
         <legend>Log in Form</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
+                @Html.LabelFor(RSSModel => RSSModel.UserName)
+                @Html.TextBoxFor(RSSModel => RSSModel.UserName)
+                @Html.ValidationMessageFor(RSSModel => RSSModel.UserName)
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
+                @Html.LabelFor(RSSModel => RSSModel.Password)
+                @Html.PasswordFor(RSSModel => RSSModel.Password)
+                @Html.ValidationMessageFor(RSSModel => RSSModel.Password)
             </li>
             <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                @Html.CheckBoxFor(RSSModel => RSSModel.RememberMe)
+                @Html.LabelFor(RSSModel => RSSModel.RememberMe, new { @class = "checkbox" })
             </li>
         </ol>
         <input type="submit" value="Log in" />

@@ -10,21 +10,21 @@ namespace TechnicalInterview_FeedReader.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "Welcome to the homepage for my RSS feeder.";
 
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Your own personal news feed reader!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Have any questions about the site or your account information? Contact us through one of these channels!";
 
             return View();
         }

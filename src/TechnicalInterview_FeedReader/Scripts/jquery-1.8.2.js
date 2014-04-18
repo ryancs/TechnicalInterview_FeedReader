@@ -3884,7 +3884,7 @@ try {
 function Sizzle( selector, context, results, seed ) {
 	results = results || [];
 	context = context || document;
-	var match, elem, xml, m,
+	var match, elem, xml, RSSModel,
 		nodeType = context.nodeType;
 
 	if ( !selector || typeof selector !== "string" ) {
@@ -3900,15 +3900,15 @@ function Sizzle( selector, context, results, seed ) {
 	if ( !xml && !seed ) {
 		if ( (match = rquickExpr.exec( selector )) ) {
 			// Speed-up: Sizzle("#ID")
-			if ( (m = match[1]) ) {
+			if ( (RSSModel = match[1]) ) {
 				if ( nodeType === 9 ) {
-					elem = context.getElementById( m );
+					elem = context.getElementById( RSSModel );
 					// Check parentNode to catch when Blackberry 4.6 returns
 					// nodes that are no longer in the document #6963
 					if ( elem && elem.parentNode ) {
 						// Handle the case where IE, Opera, and Webkit return items
 						// by name instead of ID
-						if ( elem.id === m ) {
+						if ( elem.id === RSSModel ) {
 							results.push( elem );
 							return results;
 						}
@@ -3917,8 +3917,8 @@ function Sizzle( selector, context, results, seed ) {
 					}
 				} else {
 					// Context is not a document
-					if ( context.ownerDocument && (elem = context.ownerDocument.getElementById( m )) &&
-						contains( context, elem ) && elem.id === m ) {
+					if ( context.ownerDocument && (elem = context.ownerDocument.getElementById( RSSModel )) &&
+						contains( context, elem ) && elem.id === RSSModel ) {
 						results.push( elem );
 						return results;
 					}
@@ -3930,8 +3930,8 @@ function Sizzle( selector, context, results, seed ) {
 				return results;
 
 			// Speed-up: Sizzle(".CLASS")
-			} else if ( (m = match[3]) && assertUsableClassName && context.getElementsByClassName ) {
-				push.apply( results, slice.call(context.getElementsByClassName( m ), 0) );
+			} else if ( (RSSModel = match[3]) && assertUsableClassName && context.getElementsByClassName ) {
+				push.apply( results, slice.call(context.getElementsByClassName( RSSModel ), 0) );
 				return results;
 			}
 		}
@@ -4094,19 +4094,19 @@ Expr = Sizzle.selectors = {
 		"ID": assertGetIdNotName ?
 			function( id, context, xml ) {
 				if ( typeof context.getElementById !== strundefined && !xml ) {
-					var m = context.getElementById( id );
+					var RSSModel = context.getElementById( id );
 					// Check parentNode to catch when Blackberry 4.6 returns
 					// nodes that are no longer in the document #6963
-					return m && m.parentNode ? [m] : [];
+					return RSSModel && RSSModel.parentNode ? [RSSModel] : [];
 				}
 			} :
 			function( id, context, xml ) {
 				if ( typeof context.getElementById !== strundefined && !xml ) {
-					var m = context.getElementById( id );
+					var RSSModel = context.getElementById( id );
 
-					return m ?
-						m.id === id || typeof m.getAttributeNode !== strundefined && m.getAttributeNode("id").value === id ?
-							[m] :
+					return RSSModel ?
+						RSSModel.id === id || typeof RSSModel.getAttributeNode !== strundefined && RSSModel.getAttributeNode("id").value === id ?
+							[RSSModel] :
 							undefined :
 						[];
 				}
